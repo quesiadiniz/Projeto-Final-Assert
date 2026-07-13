@@ -36,7 +36,6 @@ static uint8_t rxByte;
  * PROTÓTIPOS LOCAIS
  ******************************************************************************/
 static void PWM_Init(void);
-static uint32_t PWM_PercentToCompare(uint8_t percent);
 
 /*******************************************************************************
  FUNCOES PUBLICAS

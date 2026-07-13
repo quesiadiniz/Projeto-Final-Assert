@@ -28,7 +28,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Bsp.h"
-#include "LevelSensor.h"
 #include <stdio.h>
 
 /* USER CODE END Includes */
@@ -108,7 +107,7 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   Bsp_Init();
-  Bsp_StartTimerInterrupt();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

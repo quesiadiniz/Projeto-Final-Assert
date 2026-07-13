@@ -1,0 +1,5 @@
+../Core/Src/Sampler.c:31:6:Sampler_Init	1
+../Core/Src/Sampler.c:44:6:Sampler_AddSample	2
+../Core/Src/Sampler.c:73:9:Sampler_IsReady	1
+../Core/Src/Sampler.c:83:9:Sampler_GetPercent	1
+../Core/Src/Sampler.c:93:6:Sampler_ClearReady	1

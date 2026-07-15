@@ -28,8 +28,10 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "Bsp.h"
-#include <stdio.h>
-
+#include "Sampler.h"
+#include "LedPwm.h"
+#include "SerialCmd.h"
+#include "Button.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -107,6 +109,10 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   Bsp_Init();
+  Sampler_Init();
+  LedPwm_Init();
+  SerialCmd_Init();
+  Button_Init();
 
   /* USER CODE END 2 */
 

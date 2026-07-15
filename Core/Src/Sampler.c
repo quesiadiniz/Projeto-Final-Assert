@@ -14,8 +14,8 @@
  * Variáveis locais
  ******************************************************************************/
 
-static uint32_t sumSamples;
-static uint16_t sampleCounter;
+static uint32_t sumSamples; // soma das amostras
+static uint16_t sampleCounter; // contador de amostras
 
 static uint8_t percentValue;
 static uint8_t readyFlag;

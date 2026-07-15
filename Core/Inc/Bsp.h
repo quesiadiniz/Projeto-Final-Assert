@@ -33,7 +33,7 @@ uint8_t Bsp_Get_ADCFlag(void); //flag
 void Bsp_Clear_ADCFlag(void);
 
 uint8_t Bsp_Get_DebounceFlag(void); //flag
-void Bsp_ClearDebounceFlag(void);
+void Bsp_Clear_DebounceFlag(void);
 
 uint8_t Bsp_Get_ButtonFlag(void); //flag
 void Bsp_Clear_ButtonFlag(void);

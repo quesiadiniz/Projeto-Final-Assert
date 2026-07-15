@@ -46,7 +46,7 @@ void Sampler_AddSample(uint16_t sample)
     sumSamples += sample;
     sampleCounter++;
 
-    if(sampleCounter >= SAMPLE_NUMBER)
+    if(sampleCounter == SAMPLE_NUMBER)
     {
         uint32_t media;
 

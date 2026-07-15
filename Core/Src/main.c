@@ -24,6 +24,7 @@
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
+#include "stdio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -107,6 +108,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
+
   /* USER CODE BEGIN 2 */
   Bsp_Init();
   Sampler_Init();
@@ -115,13 +117,52 @@ int main(void)
   Button_Init();
 
   /* USER CODE END 2 */
-
+  static uint32_t tempo = 0; // para controlar a cada 1s
+  char msg[100]; // para impressao da atring completaa
+  uint8_t valor_atual = 0; // armazena ultimo valor do percent para que ele nn seja atualizado
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
+	 if (Bsp_Get_RxFlag())
+	 {
+		 Bsp_Clear_RxFlag();
+		 SerialCmd_ProcessChar(Bsp_Get_RxByte());
+	 }
 
+	 Button_Debounce();
+
+	 if (Bsp_Get_ADCFlag())
+	 {
+		Bsp_Clear_ADCFlag();
+		Sampler_AddSample(Bsp_ADC_Read());
+	 }
+
+	 if (Sampler_IsReady())
+	 {
+	     Sampler_ClearReady();
+
+	     if (!Button_Get_Freeze())
+	     {
+	         valor_atual = Sampler_GetPercent();
+	         LedPwm_Update(valor_atual);
+	     }
+	 }
+
+     if ((HAL_GetTick() - tempo) >= 1000)
+     {
+         tempo = HAL_GetTick();
+
+         sprintf(msg, "VALUE: %d%% | LED1: %d%% aceso || LED2: %d%% aceso || LED3: %d%% aceso || STATE: %s\r\n",
+                 Sampler_GetPercent(),
+                 LedPwm_Update(1),
+                 LedPwm_Update(2),
+                 LedPwm_Update(3),
+                 Button_Get_Freeze() ? "OFF" : "ON");
+
+         Bsp_Usart3_Transmit(msg);
+     }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

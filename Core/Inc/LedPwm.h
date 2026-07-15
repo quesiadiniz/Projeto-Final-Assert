@@ -18,7 +18,7 @@
  ******************************************************************************/
 void LedPwm_Init(void);
 void LedPwm_SelectLed(uint8_t led);
-void LedPwm_Update(uint8_t percent);
+uint8_t LedPwm_Update(uint8_t percent);
 
 uint8_t LedPwm_GetSelected(void);
 

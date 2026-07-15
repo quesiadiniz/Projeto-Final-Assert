@@ -55,29 +55,29 @@ void LedPwm_SelectLed(uint8_t led)
 /******************************************************************************
  * @brief Atualiza o brilho do LED selecionado.
  * @param percent Intensidade em porcentagem.
- * @retval nenhum.
+ * @retval percentagem do led
  ******************************************************************************/
-void LedPwm_Update(uint8_t percent)
+uint8_t LedPwm_Update(uint8_t percent)
 {
     switch(ledSelecionado)
     {
         case 1:
             dutyLed1 = percent;
             Bsp_Set_LED1(dutyLed1);
-            break;
+            return dutyLed1;
 
         case 2:
             dutyLed2 = percent;
             Bsp_Set_LED2(dutyLed2);
-            break;
+            return dutyLed2;
 
         case 3:
             dutyLed3 = percent;
             Bsp_Set_LED3(dutyLed3);
-            break;
+            return dutyLed3;
 
         default:
-            break;
+            return 0;
     }
 }
 

@@ -13,7 +13,7 @@
 ../Core/Src/Bsp.c:154:6:Bsp_Clear_DebounceFlag	1
 ../Core/Src/Bsp.c:159:9:Bsp_Get_ButtonFlag	1
 ../Core/Src/Bsp.c:164:6:Bsp_Clear_ButtonFlag	1
-../Core/Src/Bsp.c:169:9:Bsp_GetRx_Flag	1
+../Core/Src/Bsp.c:169:9:Bsp_Get_RxFlag	1
 ../Core/Src/Bsp.c:174:6:Bsp_Clear_RxFlag	1
 ../Core/Src/Bsp.c:188:6:HAL_TIM_PeriodElapsedCallback	3
 ../Core/Src/Bsp.c:206:6:HAL_GPIO_EXTI_Callback	2

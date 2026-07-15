@@ -166,7 +166,7 @@ void Bsp_Clear_ButtonFlag(void)
 	buttonFlag = 0;
 }
 
-uint8_t Bsp_GetRx_Flag(void)
+uint8_t Bsp_Get_RxFlag(void)
 {
     return rxFlag;
 }

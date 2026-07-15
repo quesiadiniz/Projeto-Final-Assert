@@ -29,6 +29,7 @@ static volatile uint8_t adcFlag = 0;
 static volatile uint8_t debounceFlag = 0;
 static volatile uint8_t buttonFlag = 0;
 
+static volatile uint8_t rxFlag = 0;
 static uint8_t rxByte;
 
 /*******************************************************************************
@@ -131,7 +132,7 @@ uint8_t Bsp_Get_RxByte(void)
 }
 
 /******************************************************************************/
-/** @brief atualiza/retorna as flags do ADC e do Debounce
+/** @brief atualiza/retorna as flags do ADC, do Debounce, butao e rxByte
  * * @param nenhum
  * * @retval nenhum.
  * ******************************************************************************/
@@ -163,6 +164,16 @@ uint8_t Bsp_Get_ButtonFlag(void)
 void Bsp_Clear_ButtonFlag(void)
 {
 	buttonFlag = 0;
+}
+
+uint8_t Bsp_GetRx_Flag(void)
+{
+    return rxFlag;
+}
+
+void Bsp_Clear_RxFlag(void)
+{
+    rxFlag = 0;
 }
 
 /*******************************************************************************
@@ -209,6 +220,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
     if (huart->Instance == USART3)
     {
+    	rxFlag = 1;
         Bsp_Usart3_Receive_IT();
     }
 }

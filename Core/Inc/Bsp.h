@@ -23,8 +23,8 @@ void Bsp_Set_LED1(uint8_t percent); //leds com pwm
 void Bsp_Set_LED2(uint8_t percent);
 void Bsp_Set_LED3(uint8_t percent);
 
-void Bsp_UartTransmit(char *msg);
-void Bsp_UartReceiveIT(void);
+void Bsp_Usart3_Transmit(char *msg);
+void Bsp_Usart3_Receive_IT(void);
 uint8_t Bsp_Get_RxByte(void);
 
 uint16_t Bsp_ADC_Read(void); // ADC
@@ -38,6 +38,7 @@ void Bsp_Clear_DebounceFlag(void);
 uint8_t Bsp_Get_ButtonFlag(void); //flag
 void Bsp_Clear_ButtonFlag(void);
 
-
+uint8_t Bsp_Get_RxFlag(void);
+void Bsp_Clear_RxFlag(void);
 
 #endif /* INC_BSP_H_ */

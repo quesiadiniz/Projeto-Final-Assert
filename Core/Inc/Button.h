@@ -18,5 +18,6 @@
  **********************************************************************************************************************/
 void Button_Init(void);
 void Button_Debounce(void);
+uint8_t Button_Get_Freeze(void);
 
 #endif /* INC_BUTTON_H_ */

@@ -15,7 +15,7 @@
 /*******************************************************************************
  * DEFINES
  ******************************************************************************/
-#define SIZE_COMAND 5 //tamanho maximo que uma instrução pode ter (ledx\n)
+#define SIZE_COMAND 5 //tamanho maximo que uma instrução pode ter (ledx\0)
 
 /*******************************************************************************
  * VARIÁVEIS LOCAIS
@@ -45,12 +45,12 @@ void SerialCmd_Init(void)
  ******************************************************************************/
 void SerialCmd_ProcessChar(uint8_t rxByte)
 {
-    if(indice < (SIZE_COMAND - 1)) // -1 por cauda do \n
+    if(indice < (SIZE_COMAND - 1)) // -1 por cauda do \0
     {
         cmd[indice++] = rxByte;
     }
 
-    if(indice == 4) // index =4 é onde esta qual led sera acionado 1,2 ou 3
+    if(indice == 4) // index = 4 é quando se recebeu todos os caracteres
     {
         cmd[4] = '\0';
 

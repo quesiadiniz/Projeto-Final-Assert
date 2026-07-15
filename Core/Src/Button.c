@@ -13,7 +13,6 @@
  ******************************************************************************/
 
 static uint8_t freeze;
-
 static uint8_t debounce;
 
 /*******************************************************************************
@@ -46,10 +45,25 @@ void Button_Debounce(void)
     }
 
     // fim do debounce
-    if(debounce && Bsp_Get_DebounceFlag())
+    if(debounce == 1)
     {
-        Bsp_Clear_DebounceFlag();
-        debounce = 0;
-        freeze = !freeze; //muda o estado
+    	if( Bsp_Get_DebounceFlag())
+    	{
+			Bsp_Clear_DebounceFlag();
+			debounce = 0;
+			freeze = !freeze; //muda o estado
+    	}
     }
 }
+
+/******************************************************************************
+ * @brief retorna o estado de congelamento.
+ * @param nenhum.
+ * @retval 0: nao esta congelado, executando
+ * @retval 1: congelou
+ ******************************************************************************/
+uint8_t Button_Get_Freeze(void)
+{
+    return freeze;
+}
+
